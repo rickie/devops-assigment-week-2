@@ -5,7 +5,8 @@ services:
 language: python
 python:
   - "3.6"
-
+node_js:
+  - 10
 
 
 before_install:
