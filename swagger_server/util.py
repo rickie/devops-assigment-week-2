@@ -23,9 +23,9 @@ def _deserialize(data, klass):
         return deserialize_datetime(data)
     elif hasattr(klass, '__origin__'):
         if klass.__origin__ == list:
-        return _deserialize_list(data, klass.__args__[0])
-    if klass.__origin__ == dict:
-        return _deserialize_dict(data, klass.__args__[1])
+            return _deserialize_list(data, klass.__args__[0])
+        if klass.__origin__ == dict:
+            return _deserialize_dict(data, klass.__args__[1])
     else:
         return deserialize_model(data, klass)
 
