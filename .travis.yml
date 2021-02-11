@@ -33,7 +33,7 @@ script:
 - node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
 
 after_success:
-  - docker login -u "$DOCKER_USER" -p "$DOCKER_PASS"
+  - docker login -u $DOCKER_USER -p "$DOCKER_PASS"
   - docker tag 476rick/devops-assignment-week-2/swagger_server 476rick/devops-assignment-week-2/swagger_server
   - docker push 476rick/devops-assignment-week-2/swagger_server
 
