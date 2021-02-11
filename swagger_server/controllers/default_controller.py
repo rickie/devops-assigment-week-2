@@ -48,7 +48,6 @@ def get_student_by_id(student_id, subject=None):  # noqa: E501
 
     :rtype: Student
     """
-    print('test')
     res = student_service.get_student_by_id(student_id, subject=subject)
     if res:
         return res
@@ -65,8 +64,6 @@ def student_get(last_name=None):  # noqa: E501
 
     :rtype: Student
     """
-    print('hoi')
-    print(last_name)
     res = student_service.student_get_by_last_name(last_name)
     if res:
         return res
