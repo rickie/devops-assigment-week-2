@@ -21,7 +21,6 @@ def add_student(student):
     if not student.last_name:
         return 'Lastname is empty', 405
         
-    print("test")
     queries = []
     query = Query()
     queries.append(query.first_name == student.first_name)
@@ -39,7 +38,6 @@ def add_student(student):
 
 
 def get_student_by_id(student_id, subject):
-    print('hoi')
     print(student_id)
     student = student_db.get(doc_id=int(student_id))
     
