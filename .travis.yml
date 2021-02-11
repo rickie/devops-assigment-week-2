@@ -20,7 +20,7 @@ before_script:
 - node_modules/.bin/newman --version
 script:
 - python -m unittest discover
-- docker build -t swagger-spring-example:1.0.0 .
+- docker build -t 476rick/devops-assignment-week-2:1.0.0 .
 - docker run --name example_api -d -t -p 127.0.0.1:8080:8080 swagger-spring-example:1.0.0
 - docker ps
 - count=0 && until $(curl --output /dev/null --silent --head --fail http://localhost:8080);
@@ -30,8 +30,8 @@ script:
 - node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
 after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
+- docker tag 476rick/devops-assignment-week-2:1.0.0 476rick/devops-assignment-week-2:latest
 - docker push 476rick/devops-assignment-week-2:latest
-- docker tag 476rick/devops-assignment-week-2 476rick/devops-assignment-week-2:latest
 
 env:
   global:
