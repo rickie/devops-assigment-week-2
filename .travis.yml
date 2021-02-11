@@ -30,7 +30,7 @@ script:
 - node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
 after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
-- docker tag devops-assignment-week-2 476rick/devops-assignment-week-2
+- docker tag devops-assignment-week-2 476rick/devops-assignment-week-2:first
 - docker push 476rick/devops-assignment-week-2
 env:
   global:
