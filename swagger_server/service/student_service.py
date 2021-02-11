@@ -31,12 +31,23 @@ def add_student(student):
 
 
 def get_student_by_id(student_id, subject):
+    print('hoi')
     student = student_db.get(doc_id=int(student_id))
-    if not student:
-        return student
     student = Student.from_dict(student)
     if not subject:
         return student
+    # if not student:
+    #     return student
+    if subject in student.grades:
+        return student
+    else:
+        print('niet in grades')
+    # student = student_db.get(doc_id=int(student_id))
+    # if not student:
+    #     return student
+    # student = Student.from_dict(student)
+    # if not subject:
+    #     return student
 
 
 def delete_student(student_id):
