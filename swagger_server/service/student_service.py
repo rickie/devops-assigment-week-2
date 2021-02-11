@@ -42,31 +42,15 @@ def get_student_by_id(student_id, subject):
         print(student)
         print(not student)
         if student:
-            print('1')
             return student
         else: 
-            print('2')
             return 'Not found', 404
 
-    print('3')
     student = Student.from_dict(student)
-    # if not student:
-    #     return student
-    # if not subject:
-        # print('hier?')
     if subject in student.grades:
         return student
     else:
         return 'Not found', 404
-    # else:
-        # print (' hier2')
-        # return 'Wrong', 404
-    # student = student_db.get(doc_id=int(student_id))
-    # if not student:
-    #     return student
-    # student = Student.from_dict(student)
-    # if not subject:
-    #     return student
 
 
 def delete_student(student_id):
