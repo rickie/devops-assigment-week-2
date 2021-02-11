@@ -16,6 +16,7 @@ student_db = TinyDB(db_file_path)
 
 
 def add_student(student):
+    print("test")
     queries = []
     query = Query()
     queries.append(query.first_name == student.first_name)
@@ -27,21 +28,39 @@ def add_student(student):
 
     doc_id = student_db.insert(student.to_dict())
     student.student_id = doc_id
+    print(student.student_id)
+    print(student.to_dict())
     return student.student_id
 
 
 def get_student_by_id(student_id, subject):
     print('hoi')
+    print(student_id)
     student = student_db.get(doc_id=int(student_id))
+    
+    if subject is None:
+        print(student)
+        print(not student)
+        if student:
+            print('1')
+            return student
+        else: 
+            print('2')
+            return 'Not found', 404
+
+    print('3')
     student = Student.from_dict(student)
-    if not subject:
-        return student
     # if not student:
     #     return student
+    # if not subject:
+        # print('hier?')
     if subject in student.grades:
         return student
     else:
-        print('niet in grades')
+        return 'Not found', 404
+    # else:
+        # print (' hier2')
+        # return 'Wrong', 404
     # student = student_db.get(doc_id=int(student_id))
     # if not student:
     #     return student
