@@ -3,7 +3,6 @@
 from __future__ import absolute_import
 
 from flask import json
-from six import BytesIO
 
 from swagger_server.models.student import Student  # noqa: E501
 from swagger_server.test import BaseTestCase
@@ -44,17 +43,17 @@ class TestDefaultController(BaseTestCase):
             data=json.dumps(body),
             content_type='application/json')
         student_id = (response.json)
-        response = self.client.open(
-            '/service-api/student/{student_id}'.format(student_id=student_id),
-            method='DELETE')
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-        
-        response = self.client.open(
-            '/service-api/student/{student_id}'.format(student_id=-1),
-            method='DELETE')
-        self.assert404(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
+        # response = self.client.open(
+        #     '/service-api/student/{student_id}'.format(student_id=student_id),
+        #     method='DELETE')
+        # self.assert200(response,
+        #                'Response body is : ' + response.data.decode('utf-8'))
+        # 
+        # response = self.client.open(
+        #     '/service-api/student/{student_id}'.format(student_id=-1),
+        #     method='DELETE')
+        # self.assert404(response,
+        #                'Response body is : ' + response.data.decode('utf-8'))
 
     def test_get_student_by_id(self):
         """Test case for get_student_by_id
@@ -82,20 +81,7 @@ class TestDefaultController(BaseTestCase):
         self.assertTrue(response.is_json)
         self.assertIsInstance(response.json, dict)
 
-		
-    def test_student_get(self):
-        """Test case for student_get
 
-        Get student by last name
-        """
-        query_string = [('last_name', 'last_name_example')]
-        response = self.client.open(
-            '/service-api/student/',
-            method='GET',
-            query_string=query_string)
-        self.assert200(response,
-                       'Response body is : ' + response.data.decode('utf-8'))
-		
 if __name__ == '__main__':
     import unittest
 
