@@ -30,8 +30,9 @@ script:
 - node_modules/.bin/newman run tests/postman_collection.json -e tests/postman_environment.json
 after_success:
 - docker login -u $DOCKER_USER -p $DOCKER_PASS
-- docker tag 476rick/devops-assignment-week-2 476rick/devops-assignment-week-2:latest
 - docker push 476rick/devops-assignment-week-2:latest
+- docker tag 476rick/devops-assignment-week-2 476rick/devops-assignment-week-2:latest
+
 env:
   global:
   - secure: tVB6lJr850AuExbQBmjjALSpNjhc4ktu29l6bn8d9EOo98QOimY7FUdHCuAg8zzMfotp8TuQwIpQkrAkzMBsgr9JfOn29M0rY1YJEleFqj8Ak+96EfQM2TW+3OYGHQlszWCJhoiBv341SYR3TFTdFLAqwwOwZZlOknDApn8LbYvN08JxyoJLnWbbmUklZVP0M5L1jiFuStNKvVz9KwarlrVaw17eAlgJ+6Bju/8nGbPMj/ZgLYF6HFpzyEbsIHNuNrGidDcbn2gsJ0mLAHCCTNsTRaKhVwJQynS9RQBggGUHpCWVDM9LZlhqOdR99g4M4sqxaAvZIpquQEwkyO21r8pfJ3tgF3zXK3C2lHeA9lWKItNCLbNcmSifuooJemCOMk9TZF878HTOU4X8Qqw29kQ1Pjb/aPcFcaBi8Kj/v9cgmtEivKoRl1HTgyB/T8nalaH5y4tqmqDkTVzgXpw2MbXoPrwvjqme8OgDBulBlpVUdn4C2nThRG9QhwzSzwjwoKuqxO/KBAWR5WmNaajVIrmEJ9nFEA3oHlaraID1Erxl1vQkuMKvzuTxYgaX8EuiyqPjJjh4dwYTdTQCsVCtsfgCOZhpR82mquqB4XTVPZ6LC7dXVMwwGcdLeHi6MS6+m4ZYhE5qv6DTzqqxXgAbSHjCV5Z281EYOJ6KiWS+6Q0=
